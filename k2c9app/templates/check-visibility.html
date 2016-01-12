@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+    
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+          <h1>K2C9 Visibility Tool</h1>
+          <hr>
+          <div class="row">
+            <div class="col-lg-12">
+
+            {% if pos_split|count == 1 %}
+              {% if in_region[0] %}
+                <div class="alert alert-success"><b>Good news! =)</b><br>
+                The position is being observed by K2.</div>
+              {% else %}
+                <div class="alert alert-danger" role="alert"><b>Oh snap! =(</b><br>
+                The position does not fall inside the K2C9 superstamp.</div>
+              {% endif %}
+
+            {% else %}
+            <table class="table table-striped" style="width: auto !important;">
+              <thead>
+                <tr>
+                  <th>Position</th><th>Visible?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for idx in range(pos_split|count) %}
+                  {% if in_region[idx] %}<tr class="success">{% else %}<tr>{% endif %}
+                    <td>{{pos_split[idx]}}</td>
+                    <td>{% if in_region[idx] %}yes{% else %}no{% endif %}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% endif %}
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <a href="k2c9.png?pos={{pos}}"><img src="k2c9.png?pos={{pos}}" class="img-responsive"></a>
+            </div>
+            <div class="col-lg-6">
+              <a href="k2c9.png?pos={{pos}}&size=1"><img src="k2c9.png?pos={{pos}}&size=1" class="img-responsive"></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>Created by Geert Barentsen, Tom Barclay, &amp; Radek Poleski.</p>
+        <!-- <a href="http://keplerscience.arc.nasa.gov">Kepler/K2 Guest Observer Office</a>.</p> -->
+      </footer>
+    </div> <!-- /container -->        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

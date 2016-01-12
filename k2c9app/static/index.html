@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+          .panel-heading a:after {
+              font-family:'Glyphicons Halflings';
+              content:"\e114";
+              float: right;
+              color: grey;
+          }
+          .panel-heading a.collapsed:after {
+              content:"\e080";
+          }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+    
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+          <h1>K2C9 Visibility Tool</h1>
+          <hr>
+
+          <p>Enter a sky coordinate below to check if it falls inside
+          the K2 Campaign 9 microlensing region. (ICRS frame)</p>
+
+          <form class="form-inline" action="check-visibility" method="get">
+            <div class="form-group">
+              <!-- <label for="exampleInputEmail1">Your coordinate</label> -->
+              <input type="text" class="form-control" name="pos" id="pos"
+              placeholder='e.g. "270.0 -28.0" or "18h00m00s -28d00m00s"' style="min-width:25em;">
+              <!-- <p class="help-block">Example block-level help text here.</p> -->
+            </div>
+            <button type="submit" class="btn btn-default">Check position</button>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row" style="margin-top: 2.5em;">
+        <div class="col-lg-6">
+
+
+          <div class="panel-group" id="accordion">
+              <div class="panel panel-default" id="panel1">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" href="#collapseOne" class="accordion-toggle">
+                        API Documentation
+                      </a>
+                    </h4>
+
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        <p>
+                        <b>/in-microlens-region?pos={POS}</b>
+                        [<a href="/in-microlens-region?pos=270.0 -28.0">example</a>]<br/>
+                        Returns "yes" if the sky coordinate specified by <i>POS</i> is being observed by K2 during Campaign 9,
+                        "no" otherwise. <i>POS</i> must be a string specifying a sky coordinate in decimal
+                        or sexagesimal format, e.g. "270.0 -28.0", "18h00m00s -28d00m00s", or "18:00:00 -28:00:00".
+                        You can supply multiple coordinates separated by commas.
+                        </p>
+                        
+                        <p>
+                        <b>/k2c9.png?pos={POS}&amp;size={SIZE}</b>
+                        [<a href="/k2c9.png?pos=270.0%20-28.0,270.5%20-28.2&size=3">example</a>]<br/>
+                        Returns a plot showing the K2C9 footprint.
+                        Optionally, the coordinate specified by <i>POS</i> can be marked,
+                        and the spatial extent of the plot can be specified to be <i>SIZE</i> degrees.
+                        See above for the formatting of <i>POS</i>.
+                        </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>Created by Geert Barentsen, Tom Barclay, &amp; Radek Poleski.</p>
+      </footer>
+    </div> <!-- /container -->        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
