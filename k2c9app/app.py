@@ -85,7 +85,10 @@ def in_microlens_region():
 @c9app.route('/check-visibility')
 def check_visibility():
     pos = request.args.get('pos', default=None, type=str)
-    positions = _parse_pos(pos)
+    try:
+        positions = _parse_pos(pos)
+    except Exception:
+        return "Error: the input is invalid."
     pos_hmsdms = [poscrd.to_string("hmsdms") for poscrd in positions]
     pos_decimal = [poscrd.to_string("decimal") for poscrd in positions]
     return flask.render_template('check-visibility.html',
