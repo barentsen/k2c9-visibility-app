@@ -5,4 +5,4 @@ flask==0.10.1
 jinja2==2.8
 werkzeug==0.11.3
 gunicorn==19.1.0
--e git://github.com/KeplerGO/K2fov.git@4d50916e86c8a29cbf8c65387799391bbb6a71fb#egg=K2fov
+-e git://github.com/KeplerGO/K2fov.git@7708be018f9519366bb4cf3022749b730fb3d46a#egg=K2fov
